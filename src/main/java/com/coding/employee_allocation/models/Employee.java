@@ -2,6 +2,7 @@ package com.coding.employee_allocation.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,10 +20,9 @@ import lombok.NoArgsConstructor;
 @Document(collection="employee")
 public class Employee {
 	@Id
-	private String employeeId;
+	private String id;
 	private String employeeName;
 	private CapabilityCentre  capabilityCentre;
-	//@JsonFormat(pattern="yyyy-MM-dd")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dateOfJoining;
 	private Designation  designation;
@@ -30,6 +30,8 @@ public class Employee {
 	private String secondarySkill;
 	private int overAllExperience;
 	private String mailId;
+	private List<String> projectId;
+	
 	
 
 }

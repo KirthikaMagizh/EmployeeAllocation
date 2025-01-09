@@ -1,13 +1,15 @@
 package com.coding.employee_allocation.dtos;
 
 import java.time.LocalDate;
-
-import com.coding.employee_allocation.models.CapabilityCentre;
-import com.coding.employee_allocation.models.Designation;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.coding.employee_allocation.models.AccountName;
+import com.coding.employee_allocation.models.CapabilityCentre;
+import com.coding.employee_allocation.models.Designation;
+import com.coding.employee_allocation.models.Employee;
+import com.coding.employee_allocation.models.Project;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto {
-	
-	
+public class EmployeeProjectDto {
 	private String id;
 	private String employeeName;
 	private CapabilityCentre  capabilityCentre;
@@ -29,6 +29,7 @@ public class EmployeeDto {
 	private String secondarySkill;
 	private int overAllExperience;
 	private String mailId;
-    private List<String> projectId;
+	private List<String> projectId;
+	private List<ProjectDto> employeeProjects;
 
 }

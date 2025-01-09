@@ -1,5 +1,7 @@
 package com.coding.employee_allocation.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coding.employee_allocation.dtos.EmployeeDto;
+import com.coding.employee_allocation.dtos.EmployeeProjectDto;
+import com.coding.employee_allocation.models.Employee;
 import com.coding.employee_allocation.services.EmployeeService;
 
 import reactor.core.publisher.Flux;
@@ -34,12 +38,36 @@ public class EmployeeController {
 		return employeeService.getEmployees();
 	}
 	
+
+	@GetMapping("getEmployeesWithProject")
+	public List<EmployeeProjectDto> getEmployeesWithProject()
+	{
+		return employeeService.getEmployeeWithProjectDetails();
+	}
+	
 	@PutMapping("updateEmployee/{id}")
-	public Mono<EmployeeDto> UpdateEmployee(@RequestBody Mono<EmployeeDto> employeeDto,@PathVariable String id)
+	public Mono<EmployeeDto> updateEmployee(@RequestBody Mono<EmployeeDto> employeeDto,@PathVariable String id)
 	{
 		return employeeService.updateEmployee(employeeDto,id);
 	}
 	
+	@GetMapping("getSecondEmployee")
+	public Mono<Employee> getSecondEmployee()
+	{
+		return employeeService.findSecondExperiencedPerson();
+	}
+	
+	@GetMapping("getEmployeesWithPrimaryAndSecondarySkills")
+	public Flux<EmployeeDto> getEmployeesWithPrimaryAndSecondarySkills()
+	{
+		return employeeService.findEmployessWithPrimaryAndSecondarySkills();
+	}
+	
+	@GetMapping("getEmployessWithNonPrimarySkills")
+	public Flux<EmployeeDto> getEmployessWithNonPrimarySkills()
+	{
+		return employeeService.findEmployesNonPrimarySkills();
+	}
 	
 	
 	

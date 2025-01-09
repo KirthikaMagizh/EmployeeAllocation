@@ -23,5 +23,4 @@ public class ProjectDto {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate projectEndDate;
 	private String remarks;
-
 }
