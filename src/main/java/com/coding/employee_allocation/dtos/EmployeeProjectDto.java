@@ -3,6 +3,7 @@ package com.coding.employee_allocation.dtos;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.coding.employee_allocation.models.AccountName;
@@ -29,7 +30,7 @@ public class EmployeeProjectDto {
 	private String secondarySkill;
 	private int overAllExperience;
 	private String mailId;
-	private List<String> projectId;
-	private List<ProjectDto> employeeProjects;
+	private List<ObjectId> projectId;
+	private List<Project> employeeProjects;
 
 }

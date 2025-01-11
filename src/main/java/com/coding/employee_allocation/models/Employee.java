@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="employee")
+@Document(collection="employeeObj")
 public class Employee {
 	@Id
 	private String id;
@@ -30,7 +31,7 @@ public class Employee {
 	private String secondarySkill;
 	private int overAllExperience;
 	private String mailId;
-	private List<String> projectId;
+	private List<ObjectId> projectId;
 	
 	
 

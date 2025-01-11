@@ -36,10 +36,11 @@ public class EmployeeService {
 	
 	public List<EmployeeProjectDto> getEmployeeWithProjectDetails()
 	{
-	   LookupOperation lookupOperation=LookupOperation.newLookup().from("project").localField("projectId").foreignField("_id").as("employeeProjects");
-	   
+	   LookupOperation lookupOperation=LookupOperation.newLookup().from("projectObj").localField("projectId").foreignField("_id").as("employeeProjects");
 	   Aggregation aggregation=Aggregation.newAggregation(lookupOperation);
-	   AggregationResults<EmployeeProjectDto> aggregationResult=mongoTemplate.aggregate(aggregation,"employee", EmployeeProjectDto.class);
+
+//	   Aggregation aggregation=Aggregation.newAggregation(Aggregation.match("{$ne:[]}",lookupOperation));
+	   AggregationResults<EmployeeProjectDto> aggregationResult=mongoTemplate.aggregate(aggregation,"employeeObj", EmployeeProjectDto.class);
 	   return aggregationResult.getMappedResults();
 	}
 	
@@ -65,8 +66,9 @@ public class EmployeeService {
 	
 	public Mono<Employee> findSecondExperiencedPerson()
 	{
-		Mono<Employee> getEmployees=employeeRepository.findSecondHighExperienceEmployee();
-        return getEmployees;
+		Mono<Employee> secondHighest =
+				employeeRepository.findAll().sort(Comparator.comparing(Employee:: getOverAllExperience).reversed()).elementAt(1);
+        return secondHighest;
 		
 	}
 	

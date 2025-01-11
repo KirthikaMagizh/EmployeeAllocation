@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection="project")
+@Document(collection="projectObj")
 public class Project {
 	@Id
 	private String id;
@@ -25,6 +25,7 @@ public class Project {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate projectEndDate;
 	private String remarks;
+//	private String projectId;
 	
 
 }

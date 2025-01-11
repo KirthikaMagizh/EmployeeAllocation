@@ -7,6 +7,7 @@ import com.coding.employee_allocation.models.Designation;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +30,6 @@ public class EmployeeDto {
 	private String secondarySkill;
 	private int overAllExperience;
 	private String mailId;
-    private List<String> projectId;
+    private List<ObjectId> projectId;
 
 }

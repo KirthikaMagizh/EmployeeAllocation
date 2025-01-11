@@ -10,13 +10,6 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface EmployeeRepository extends ReactiveMongoRepository<Employee,String> {
-	@Aggregation(pipeline = {
-			  
-			  "{ '$sort' : { 'overAllExperience' : -1 } }",
-			  "{ '$skip' : ?1 }",
-			  "{ '$limit' : ?1 }"
-			})
- Mono<Employee> findSecondHighExperienceEmployee();
 	
 
 }
